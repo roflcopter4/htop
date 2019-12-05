@@ -575,7 +575,7 @@ void Action_setBindings(Htop_Action* keys) {
    keys['q'] = actionQuit;
    keys['a'] = actionSetAffinity;
    keys[KEY_F(9)] = actionKill;
-   keys['k'] = actionKill;
+   keys['x'] = actionKill;
    keys[KEY_RECLICK] = actionExpandOrCollapse;
    keys['+'] = actionExpandOrCollapse;
    keys['='] = actionExpandOrCollapse;
@@ -586,12 +586,11 @@ void Action_setBindings(Htop_Action* keys) {
    keys['S'] = actionSetup;
    keys['C'] = actionSetup;
    keys[KEY_F(2)] = actionSetup;
-   keys['l'] = actionLsof;
+   keys['L'] = actionLsof;
    keys['s'] = actionStrace;
    keys[' '] = actionTag;
    keys['\014'] = actionRedraw; // Ctrl+L
    keys[KEY_F(1)] = actionHelp;
-   keys['h'] = actionHelp;
    keys['?'] = actionHelp;
    keys['U'] = actionUntagAll;
    keys['c'] = actionTagAllChildren;

@@ -63,13 +63,31 @@ struct Panel_ {
 
 #define Panel_setDefaultBar(this_) do{ (this_)->currentBar = (this_)->defaultBar; }while(0)
 
-
-#ifndef MIN
-#define MIN(a,b) ((a)<(b)?(a):(b))
-#endif
-#ifndef MAX
-#define MAX(a,b) ((a)>(b)?(a):(b))
-#endif
+#if defined __GNUC__ && __GNUC__ >= 4
+#  ifndef MIN
+#    define MIN(a, b)                   \
+          __extension__({               \
+                  __auto_type a_ = (a); \
+                  __auto_type b_ = (b); \
+                  a_ < b_ ? a_ : b_;    \
+          })
+#  endif
+#  ifndef MAX
+#    define MAX(a, b)                   \
+          __extension__({               \
+                  __auto_type a_ = (a); \
+                  __auto_type b_ = (b); \
+                  a_ > b_ ? a_ : b_;    \
+          })
+#  endif
+#else /* !defined __GNUC__ */
+#  ifndef MIN
+#    define MIN(a,b) ((a) < (b) ? (a) : (b))
+#  endif
+#  ifndef MAX
+#    define MAX(a,b) ((a) > (b) ? (a) : (b))
+#  endif
+#endif /* defined __GNUC__ */
 
 #define KEY_CTRL(l) ((l)-'A'+1)
 
